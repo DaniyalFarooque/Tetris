@@ -1,41 +1,54 @@
 'use strict';
+//Retrieve css for canvas
 var canvas = document.querySelector('canvas');
-canvas.width = 640;
-canvas.height = 640;
 
+//This will remove focus from all buttons as soon as they are focused.
+//This will prevent spacebar from ever activating the dark toggle button
+document.querySelectorAll("button").forEach( function(item) {
+    item.addEventListener('focus', function() {
+        this.blur();
+    })
+})
+//set canvas size
+canvas.width = 900;
+canvas.height = 550;
+
+//creation of a  two-dimensional rendering context(Drawing plane).
 var g = canvas.getContext('2d');
-
+//g.translate(300, 60); // move to (300, 60)
+//moves with their change in x and y
 var right = { x: 1, y: 0 };
 var down = { x: 0, y: 1 };
 var left = { x: -1, y: 0 };
 
 var EMPTY = -1;
 var BORDER = -2;
-
+var X=400    ,Y=-105;
 var fallingShape;
 var nextShape;
 var dim = 640;
-var nRows = 18;
-var nCols = 12;
+var nRows = 19;
+var nCols = 15;
 var blockSize = 30;
-var topMargin = 50;
-var leftMargin = 20;
-var scoreX = 400;
-var scoreY = 330;
-var titleX = 130;
+//falling object starting position
+var topMargin = Y+107;
+var leftMargin = X+20;
+var titleX = 230;
 var titleY = 160;
 var clickX = 120;
 var clickY = 400;
-var previewCenterX = 467;
-var previewCenterY = 97;
+//preview shape coordinates
+var previewCenterX = -280;
+var previewCenterY = 390;
 var mainFont = 'bold 48px monospace';
 var smallFont = 'bold 18px monospace';
 var colors = ['green', 'red', 'blue', 'purple', 'orange', 'blueviolet', 'magenta'];
-var gridRect = { x: 46, y: 47, w: 308, h: 517 };
-var previewRect = { x: 387, y: 47, w: 200, h: 200 };
-var titleRect = { x: 100, y: 95, w: 252, h: 100 };
-var clickRect = { x: 50, y: 375, w: 252, h: 40 };
-var outerRect = { x: 5, y: 5, w: 630, h: 630 };
+//playing grid
+var gridRect = { x: X+46, y: Y+107, w: 398, h: 540 };//292,59
+var previewRect = { x: 5, y: 260, w: 280, h: 280 };
+var titleRect = { x: X+100, y: 95, w: 252, h: 100 };
+var clickRect = { x: X+50, y: Y+425, w: 252, h: 40 };
+var outerRect = { x: X+5, y: Y+55, w: 400, h: 630 };
 var squareBorder = 'white';
 var titlebgColor = 'white';
 var textColor = 'black';
@@ -59,8 +72,10 @@ addEventListener('keydown', function (event) {
     if (!keyDown) {
         keyDown = true;
 
-        if (scoreboard.isGameOver())
+        if (scoreboard.isGameOver()){
+            draw();
             return;
+        }
 
         switch (event.key) {
 
@@ -96,10 +111,11 @@ addEventListener('keydown', function (event) {
         draw();
     }
 });
-
-addEventListener('click', function () {
-    startNewGame();
-});
+document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        startNewGame(); 
+    }
+}
 
 addEventListener('keyup', function () {
     keyDown = false;
@@ -131,7 +147,7 @@ function canRotate(s) {
 function rotate(s) {
     if (s === Shapes.Square)
         return;
-
+    //rotating the shape
     s.pos.forEach(function (row) {
         var tmp = row[0];
         row[0] = row[1];
@@ -199,7 +215,7 @@ function Shape(shape, o) {
     this.pos = this.reset();
     this.ordinal = o;
 }
-
+//shapes present 
 var Shapes = {
     ZShape: [[0, -1], [0, 0], [-1, 0], [-1, 1]],
     SShape: [[0, -1], [0, 0], [1, 0], [1, 1]],
@@ -211,12 +227,16 @@ var Shapes = {
 };
 
 function getRandomShape() {
+    //array of values stored in Shapes
     var keys = Object.keys(Shapes);
+    //choose a random number
+    //math.random returns a value in between 0 and 1, both inclusive.
     var ord = Math.floor(Math.random() * keys.length);
+    // retrieve the shape values 
     var shape = Shapes[keys[ord]];
     return new Shape(shape, ord);
 }
-
+//adding additional property to the shape object
 Shape.prototype.reset = function () {
     this.pos = new Array(4);
     for (var i = 0; i < this.pos.length; i++) {
@@ -226,9 +246,12 @@ Shape.prototype.reset = function () {
 }
 
 function selectShape() {
+    //iniitial colummn and row of the object
     fallingShapeRow = 1;
-    fallingShapeCol = 5;
+    fallingShapeCol = 7;
+    // advance to the next shape displayed in the side panel
     fallingShape = nextShape;
+    //choose the next shape(it is global variable)
     nextShape = getRandomShape();
     if (fallingShape != null) {
         fallingShape.reset();
@@ -243,7 +266,6 @@ function Scoreboard() {
     var score = 0;
     var topscore = 0;
     var gameOver = true;
-
     this.reset = function () {
         this.setTopscore();
         level = lines = score = 0;
@@ -353,10 +375,9 @@ function drawStartScreen() {
     fillRect(clickRect, titlebgColor);
 
     g.fillStyle = textColor;
-    g.fillText('Tetris', titleX, titleY);
-
+    g.fillText('NEW GAME', titleX+290, titleY,);
     g.font = smallFont;
-    g.fillText('click to start', clickX, clickY);
+    g.fillText('Press Space To Start', clickX+360, clickY-50);
 }
 
 function fillRect(r, color) {
@@ -382,7 +403,7 @@ function drawSquare(colorIndex, r, c) {
 function drawUI() {
 
     // background
-    fillRect(outerRect, bgColor);
+    //fillRect(outerRect, bgColor);
     fillRect(gridRect, gridColor);
 
     // the blocks dropped in the grid
@@ -398,15 +419,15 @@ function drawUI() {
     g.lineWidth = largeStroke;
     drawRect(gridRect, gridBorderColor);
     drawRect(previewRect, gridBorderColor);
-    drawRect(outerRect, gridBorderColor);
+    //drawRect(outerRect, gridBorderColor);
 
     // scoreboard
     g.fillStyle = textColor;
     g.font = smallFont;
-    g.fillText('hiscore    ' + scoreboard.getTopscore(), scoreX, scoreY);
-    g.fillText('level      ' + scoreboard.getLevel(), scoreX, scoreY + 30);
-    g.fillText('lines      ' + scoreboard.getLines(), scoreX, scoreY + 60);
-    g.fillText('score      ' + scoreboard.getScore(), scoreX, scoreY + 90);
+    g.fillText(scoreboard.getTopscore(), 150, 36);
+    g.fillText(scoreboard.getLevel(), 150, 99 )
+    g.fillText(scoreboard.getLines(), 150, 164 )
+    g.fillText(scoreboard.getScore(), 150, 227 )
 
     // preview
     var minX = 5, minY = 5, maxX = 0, maxY = 0;
@@ -474,6 +495,7 @@ function initGrid() {
     }
     for (var r = 0; r < nRows; r++) {
         grid[r] = new Array(nCols);
+        //Initialise the grid as empty
         fill(grid[r], EMPTY);
         for (var c = 0; c < nCols; c++) {
             if (c === 0 || c === nCols - 1 || r === nRows - 1)
@@ -483,7 +505,9 @@ function initGrid() {
 }
 
 function init() {
+    //initialise the tetris box/gird
     initGrid();
+    //selecting the shape
     selectShape();
     draw();
 }
