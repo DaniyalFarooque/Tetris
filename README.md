@@ -17,6 +17,18 @@
 ![Main Page](https://user-images.githubusercontent.com/56557002/99680001-994d9880-2aa2-11eb-89b7-d8b4e4f7ec07.PNG)
 
 
+## Playing Pieces
+
+
+![playing pieces](https://user-images.githubusercontent.com/56557002/99682145-efbbd680-2aa4-11eb-9bc8-6070ed517dd8.PNG)
+
+
+## Game Play
+
+
+![gameplay](https://user-images.githubusercontent.com/56557002/99682934-cd768880-2aa5-11eb-8cfb-ca05edfec3d5.PNG)
+
+
 ## Help Page
 
 
