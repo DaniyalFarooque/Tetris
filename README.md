@@ -2,7 +2,7 @@
 ## Login Page
 
 
-![signup](https://user-images.githubusercontent.com/56557002/99681087-c64e7b00-2aa3-11eb-8af3-be79aa4d9235.PNG)
+![mainpage](https://user-images.githubusercontent.com/56557002/99680747-648e1100-2aa3-11eb-8f0d-e48b328b820e.PNG)
 
 
 ## SignUp Page
