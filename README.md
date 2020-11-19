@@ -19,4 +19,4 @@ https://github.com/decodefreak/Tetris/issues/2#issue-746643999
 
 ## Help Page
 
-https://github.com/decodefreak/Tetris/issues/4#issue-746647035
+![Help page](https://user-images.githubusercontent.com/56557002/99681228-e9792a80-2aa3-11eb-85ae-eeb50eb3afff.PNG)
