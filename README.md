@@ -3,9 +3,9 @@ Tetris is a 2-D classic tile matching puzzle game. It is primarily composed of a
 
 ### TOOLS AND TECHNOLOGY USED
 #### Languages Used: JavaScript and PHP
-#### Frontend – HTML, CSS, JavaScript
-#### Backend – Php
-#### Database – MySql
+#### Frontend – HTML5, CSS3, JavaScript, Bootstrap
+#### Backend – PHP
+#### Database – MySQL
 ### Login Page
 
 
