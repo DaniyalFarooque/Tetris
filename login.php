@@ -3,7 +3,7 @@
 //login.php
 
 // connect database
-include('../TETRIS/database/database_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/TETRIS/database/database_connection.php');
 
 session_start();
 
