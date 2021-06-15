@@ -3,7 +3,7 @@
 //login.php
 
 // connect database
-include('../demotetris/database/database_connection.php');
+include('../TETRIS/database/database_connection.php');
 
 session_start();
 

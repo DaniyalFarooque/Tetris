@@ -20,9 +20,9 @@ CREATE TABLE `tbl_user` (
 
 insert  into `tbl_user`(`user_id`,`user_name`,`user_doj`,`user_emailid`,`user_password`) values 
 (1,'Daniyal','2020-09-04','daniyal@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW'),
-(2,'Chitra','2020-09-19','chitra@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW'),
-(3,'demouser1','2020-09-04','demo1@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW'),
-(4,'demouser2','2020-09-04','demo2@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW');
+(2,'demouser1','2020-09-19','demouser1@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW'),
+(3,'demouser2','2020-09-04','demo2@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW'),
+(4,'demouser3','2020-09-04','demo3@gmail.com','$2y$10$Vb9t4CvkJwm41KXgPehuLOFcM7o5Qdm1RFxSBxzh9cvBcc21AUAiW');
 
 /*----------------------------------------------------------------------------------------------------*/
 

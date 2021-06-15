@@ -2,7 +2,7 @@
 
 //check_user_login.php
 
-include('../demotetris/database/database_connection.php');
+include('../TETRIS/database/database_connection.php');
 
 session_start();
 
@@ -44,7 +44,7 @@ if($error == 0)
 	WHERE user_emailid = '".$user_emailid."'
 	";
 
-	// match emailid by the databse
+	// match emailid by the database
 
 	$statement = $connect->prepare($query);
 	if($statement->execute())

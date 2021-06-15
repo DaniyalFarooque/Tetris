@@ -3,9 +3,19 @@
 //database_connection.php
 
 // connect database
-$connect = new PDO("mysql:host=localhost;dbname=tetris","root","");
-
-$base_url = "http://localhost:8085/demotetris/";
+	// Development Database Connection
+	// $host = "localhost";
+	// $db = "tetris";
+	// $user = "root";
+	// $pass = "";
+	
+	$host = "remotemysql.com";
+	$db = "CqRdxrX2s8";
+	$user = "CqRdxrX2s8";
+	$pass = "Cwg1YProQE";
+	
+	$connect = new PDO("mysql:host=$host;dbname=$db",$user,$pass);
+	$base_url = $_SERVER['DOCUMENT_ROOT'];
 
 
 // count number of total rows

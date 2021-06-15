@@ -2,7 +2,7 @@
 
 //header.php
 
-include('../demotetris/database/database_connection.php');
+include('../TETRIS/database/database_connection.php');
 session_start();
 
 // call login.php if not logined
