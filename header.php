@@ -2,7 +2,8 @@
 
 //header.php
 
-include('../TETRIS/database/database_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/TETRIS/database/database_connection.php');
+
 session_start();
 
 // call login.php if not logined
