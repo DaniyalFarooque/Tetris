@@ -3,7 +3,8 @@
 //leaderboard_action.php
 
 // include database
-include('database/database_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/TETRIS/database/database_connection.php');
+
 session_start();
 
 if(isset($_POST["action"]))
