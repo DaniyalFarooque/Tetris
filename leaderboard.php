@@ -1,6 +1,6 @@
 <?php
 
-//attendance.php
+//leaderboard.php
 
 include('header.php');
 
